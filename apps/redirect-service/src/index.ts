@@ -2,7 +2,7 @@
 import 'dotenv/config';
 import Fastify from 'fastify';
 import cors from '@fastify/cors';
-import { prisma } from './db';
+import { prisma } from './db.js';
 import { createRequire } from 'module';
 
 // CJS interop for ua-parser-js

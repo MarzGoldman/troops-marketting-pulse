@@ -2,7 +2,7 @@
 import 'dotenv/config';
 import Fastify from 'fastify';
 import { z } from 'zod';
-import { prisma } from './db';
+import { prisma } from './db.js';
 import { customAlphabet } from 'nanoid';
 
 const app = Fastify();

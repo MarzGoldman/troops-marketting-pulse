@@ -9,7 +9,8 @@
     "build": "pnpm -r build",
     "lint": "pnpm -r lint",
     "typecheck": "pnpm -r typecheck",
-    "postinstall": "pnpm -w exec prisma generate --schema packages/db/prisma/schema.prisma"
+    "postinstall": "prisma generate --schema=packages/db/prisma/schema.prisma",
+    "clean": "rm -rf apps/*/dist"
   },
   "keywords": [],
   "author": "",
