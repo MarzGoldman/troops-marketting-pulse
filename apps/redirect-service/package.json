@@ -9,6 +9,7 @@
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "dependencies": {
+    "@fastify/cors": "^8.5.0",
     "@prisma/client": "^6.16.2",
     "dotenv": "^17.2.2",
     "fastify": "^4.29.1",

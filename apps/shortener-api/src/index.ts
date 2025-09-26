@@ -37,7 +37,17 @@ app.post('/shorten', async (req, reply) => {
   return reply.code(500).send({ ok: false, error: 'Collision loop, try again' });
 });
 
+app.get('/urls', async () => {
+  const urls = await prisma.url.findMany({
+    orderBy: { createdAt: 'desc' },
+    select: { shortCode: true, targetUrl: true, createdAt: true },
+  });
+  return { ok: true, urls };
+});
+
 const PORT = Number(process.env.PORT || 4060);
 app.listen({ port: PORT, host: '0.0.0.0' }).then(() => {
   console.log(`shortener-api listening on http://localhost:${PORT}`);
 });
+
+app.get('/debug/url-count', async () => ({ count: await prisma.url.count() }));
