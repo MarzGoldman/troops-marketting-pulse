@@ -1,7 +1,8 @@
 // apps/web/src/app/api/shorten/route.ts
 export const dynamic = "force-dynamic";
+import type { NextRequest } from "next/server";
 
-export async function POST(req: Request) {
+export async function POST(req: NextRequest) {
   const base = process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:4060";
   const body = await req.text(); // pass-through
   const r = await fetch(`${base}/shorten`, {
