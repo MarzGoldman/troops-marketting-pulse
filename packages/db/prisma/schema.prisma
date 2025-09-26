@@ -17,12 +17,18 @@ model Url {
 }
 
 model Click {
-  id        String   @id @default(cuid())
-  urlId     String
-  createdAt DateTime @default(now())
-  ip        String?  @db.VarChar(45)
-  userAgent String?
-  referer   String?
+  id         String   @id @default(cuid())
+  urlId      String
+  createdAt  DateTime @default(now())
+  ip         String?  @db.VarChar(45)
+  userAgent  String?
+  referer    String?
+
+  // NEW
+  deviceType String?  @db.VarChar(32)  // "desktop" | "mobile" | "tablet" | null
+  browser    String?  @db.VarChar(32)  // e.g. "Chrome"
+  os         String?  @db.VarChar(32)  // e.g. "iOS"
+  isBot      Boolean  @default(false)
 
   Url Url @relation(fields: [urlId], references: [id], onDelete: Cascade)
 

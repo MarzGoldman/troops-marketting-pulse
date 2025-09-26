@@ -11,7 +11,8 @@
   "dependencies": {
     "@prisma/client": "^6.16.2",
     "dotenv": "^17.2.2",
-    "fastify": "^4.29.1"
+    "fastify": "^4.29.1",
+    "ua-parser-js": "^2.0.5"
   },
   "devDependencies": {
     "tsx": "^4.16.0",
