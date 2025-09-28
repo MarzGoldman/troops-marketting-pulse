@@ -1,4 +1,5 @@
 // packages/db/prisma/schema.prisma
+
 generator client {
   provider = "prisma-client-js"
 }
@@ -9,28 +10,37 @@ datasource db {
 }
 
 model Url {
-  id        String   @id @default(cuid())
-  shortCode String   @unique @db.VarChar(16)
+  id        String @id @default(cuid())
+  shortCode String @unique @db.VarChar(16)
   targetUrl String
+
+  // REQUIRED from day one
+  userId String
+
   createdAt DateTime @default(now())
-  clicks    Click[]
+
+  clicks Click[]
+
+  // common dashboard query: "my latest links"
+  @@index([userId, createdAt])
 }
 
 model Click {
-  id         String   @id @default(cuid())
-  urlId      String
-  createdAt  DateTime @default(now())
-  ip         String?  @db.VarChar(45)
-  userAgent  String?
-  referer    String?
+  id        String   @id @default(cuid())
+  urlId     String
+  createdAt DateTime @default(now())
 
-  // NEW
-  deviceType String?  @db.VarChar(32)  // "desktop" | "mobile" | "tablet" | null
-  browser    String?  @db.VarChar(32)  // e.g. "Chrome"
-  os         String?  @db.VarChar(32)  // e.g. "iOS"
-  isBot      Boolean  @default(false)
+  ip        String? @db.VarChar(45)
+  userAgent String?
+  referer   String?
 
-  Url Url @relation(fields: [urlId], references: [id], onDelete: Cascade)
+  deviceType String? @db.VarChar(32) // "desktop" | "mobile" | "tablet" | null
+  browser    String? @db.VarChar(32) // e.g. "Chrome"
+  os         String? @db.VarChar(32) // e.g. "iOS"
+  isBot      Boolean @default(false)
+
+  // conventional lower-case relation field name
+  url Url @relation(fields: [urlId], references: [id], onDelete: Cascade)
 
   @@index([urlId, createdAt])
 }
