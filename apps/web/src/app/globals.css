@@ -1,26 +1,34 @@
+/* Tailwind v4 core */
 @import "tailwindcss";
 
+/* 1) Define light & dark tokens once */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* HSL components (no hsl() here) */
+  --background: 0 0% 100%;
+  --foreground: 222.2 47.4% 11.2%;
+  --muted-foreground: 215 16.3% 46.9%;
+  --border: 214.3 31.8% 91.4%;
+  --card: 0 0% 100%;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.dark {
+  --background: 222.2 84% 4.9%;
+  --foreground: 210 40% 98%;
+  --muted-foreground: 215 20.2% 65.1%;
+  --border: 217.2 32.6% 17.5%;
+  --card: 224 71% 4%;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* 2) Map Tailwind-style utility names to those tokens */
+@layer utilities {
+  .bg-background { background-color: hsl(var(--background)); }
+  .text-foreground { color: hsl(var(--foreground)); }
+  .text-muted-foreground { color: hsl(var(--muted-foreground)); }
+  .border-border { border-color: hsl(var(--border)); }
+  .bg-card { background-color: hsl(var(--card)); }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* 3) (Optional) global defaults without fighting Tailwind classes */
+html, body {
+  min-height: 100%;
 }
