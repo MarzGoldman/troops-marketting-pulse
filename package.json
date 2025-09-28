@@ -1,21 +1,16 @@
 {
   "name": "troops-marketting-pulse",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
   "private": true,
   "scripts": {
     "dev": "pnpm -r --parallel dev",
     "build": "pnpm -r build",
+    "start": "pnpm -r --parallel start",
     "lint": "pnpm -r lint",
     "typecheck": "pnpm -r typecheck",
     "postinstall": "prisma generate --schema=packages/db/prisma/schema.prisma",
     "clean": "rm -rf apps/*/dist"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "packageManager": "pnpm@10.17.1",
   "devDependencies": {
     "dotenv-cli": "^10.0.0",
     "prisma": "^6.16.2",
@@ -25,5 +20,6 @@
   "dependencies": {
     "@prisma/client": "^6.16.2",
     "dotenv": "^17.2.2"
-  }
+  },
+  "packageManager": "pnpm@10.17.1"
 }
