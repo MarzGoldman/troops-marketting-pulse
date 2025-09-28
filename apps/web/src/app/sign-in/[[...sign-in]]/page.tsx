@@ -7,7 +7,7 @@ export default async function LinkStats({
 }) {
   const { code } = await params;
 
-  const base = process.env.NEXT_PUBLIC_REDIRECT_BASE_URL || "http://localhost:4070";
+  const base = process.env.REDIRECT_API_BASE_URL || "http://localhost:4070";
   const r = await fetch(`${base}/stats/${code}`, { cache: "no-store" });
 
   if (!r.ok) {

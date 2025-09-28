@@ -4,9 +4,12 @@ import { issueBearer } from "../_auth/issue";
 import { auth } from "@clerk/nextjs/server";
 
 export async function GET() {
-  const { userId } = await auth();     // ← await it
+  const { userId } = await auth();
   if (!userId) {
-    return new Response(JSON.stringify({ ok: false, error: "unauthorized" }), { status: 401 });
+    return new Response(
+      JSON.stringify({ ok: false, error: "unauthorized" }),
+      { status: 401 }
+    );
   }
 
   const base = process.env.SHORTENER_API_BASE_URL || "http://localhost:4060";
