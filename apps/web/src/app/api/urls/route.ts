@@ -9,7 +9,7 @@ export async function GET() {
     return new Response(JSON.stringify({ ok: false, error: "unauthorized" }), { status: 401 });
   }
 
-  const base = process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:4060";
+  const base = process.env.SHORTENER_API_BASE_URL || "http://localhost:4060";
   const bearer = await issueBearer(userId);
 
   const r = await fetch(`${base}/urls`, {

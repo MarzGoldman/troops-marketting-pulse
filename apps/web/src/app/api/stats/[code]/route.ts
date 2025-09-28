@@ -6,8 +6,7 @@ export async function GET(
   context: { params: Promise<{ code: string }> }
 ) {
   const { code } = await context.params; // ✅ await Promise<{ code }>
-  const base =
-    process.env.NEXT_PUBLIC_REDIRECT_BASE_URL || "http://localhost:4070";
+  const base = process.env.REDIRECT_API_BASE_URL || "http://localhost:4070";
 
   const r = await fetch(`${base}/stats/${code}`, { cache: "no-store" });
   const data = await r.json();

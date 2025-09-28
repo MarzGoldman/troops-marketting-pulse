@@ -10,7 +10,7 @@ export async function POST(req: NextRequest) {
     return new Response(JSON.stringify({ ok: false, error: "unauthorized" }), { status: 401 });
   }
 
-  const base = process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:4060";
+  const base = process.env.SHORTENER_API_BASE_URL || "http://localhost:4060";
   const body = await req.text();
   const bearer = await issueBearer(userId);
 
