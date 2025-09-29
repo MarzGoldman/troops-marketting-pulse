@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build --turbopack --no-lint",
-     "start": "HOST=0.0.0.0 next start -p ${PORT:-3000}",
+    "start": "HOST=0.0.0.0 next start -p ${PORT:-3000}",
     "lint": "eslint"
   },
   "dependencies": {

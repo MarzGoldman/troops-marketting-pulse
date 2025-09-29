@@ -81,8 +81,8 @@ app.get('/stats/:code', async (req, reply) => {
 });
 
 const PORT = Number(process.env.PORT || 4070);
-app.listen({ port: PORT, host: '0.0.0.0' }).then(() => {
-  console.log(`redirect-service listening on http://localhost:${PORT}`);
+app.listen({ port: PORT, host: '::' }).then(() => {
+  console.log(`redirect-service listening on http://0.0.0.0:${PORT}`);
 });
 
 app.get('/debug/url-count', async () => ({ count: await prisma.url.count() }));

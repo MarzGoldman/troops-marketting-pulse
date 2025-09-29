@@ -1,3 +1,4 @@
+// apps/shortener-api/src/index.ts
 import 'dotenv/config';
 import Fastify from 'fastify';
 import { z } from 'zod';
@@ -50,8 +51,8 @@ app.get('/urls', { preHandler: requireAuth }, async (req) => {
 });
 
 const PORT = Number(process.env.PORT || 4060);
-app.listen({ port: PORT, host: '0.0.0.0' }).then(() => {
-  console.log(`shortener-api listening on http://localhost:${PORT}`);
+app.listen({ port: PORT, host: '::' }).then(() => {
+  console.log(`shortener-api listening on http://0.0.0.0:${PORT}`);
 });
 
 app.get('/debug/url-count', async () => ({ count: await prisma.url.count() }));
