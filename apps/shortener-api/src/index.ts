@@ -50,7 +50,7 @@ app.get('/urls', { preHandler: requireAuth }, async (req) => {
   return { ok: true, urls };
 });
 
-const PORT = Number(process.env.PORT || 4060);
+const PORT = Number(process.env.PORT || 8080);
 app.listen({ port: PORT, host: '::' }).then(() => {
   console.log(`shortener-api listening on http://0.0.0.0:${PORT}`);
 });

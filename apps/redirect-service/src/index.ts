@@ -80,7 +80,7 @@ app.get('/stats/:code', async (req, reply) => {
   });
 });
 
-const PORT = Number(process.env.PORT || 4070);
+const PORT = Number(process.env.PORT || 8080);
 app.listen({ port: PORT, host: '::' }).then(() => {
   console.log(`redirect-service listening on http://0.0.0.0:${PORT}`);
 });
