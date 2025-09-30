@@ -1,11 +1,15 @@
 // apps/web/src/app/api/_auth/issue.ts
 import { SignJWT } from "jose";
 
-export async function issueBearer(sub: string) {
-  const secret = new TextEncoder().encode(process.env.AUTH_SECRET!);
-  return await new SignJWT({ sub })
+const AUTH_SECRET = process.env.AUTH_SECRET!;
+const key = new TextEncoder().encode(AUTH_SECRET);
+
+export async function issueBearer(userId: string) {
+  // HS256 JWT with userId in `sub`
+  return await new SignJWT({})
     .setProtectedHeader({ alg: "HS256" })
+    .setSubject(userId)
     .setIssuedAt()
-    .setExpirationTime("1h")
-    .sign(secret);
+    .setExpirationTime("15m")
+    .sign(key);
 }
