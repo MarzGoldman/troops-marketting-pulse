@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@prisma/client": "^6.16.2",
+    "@radix-ui/react-tooltip": "^1.2.8",
     "dotenv": "^17.2.2"
   },
   "packageManager": "pnpm@10.17.1"
